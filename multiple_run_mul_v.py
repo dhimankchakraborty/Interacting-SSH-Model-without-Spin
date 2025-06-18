@@ -21,12 +21,12 @@ v_end = 3
 v_arr = np.linspace(v_0, v_end, v_step_no)
 v_arr = np.around(v_arr, decimals=3)
 w = 1
-N = 4
+N = 5
 tot_sites = 2 * N
 N_e = N
 topo_state_no = 2
 V1 = 1
-V2 = 2
+V2 = 1.5
 
 start_time = datetime.now()
 
@@ -48,15 +48,15 @@ for k, v in enumerate(v_arr):
 
     all_e_val_arr.append(e_val_arr)
 
-    # e_val_arr_abs = np.abs(e_val_arr)
+    e_val_arr_abs = np.abs(e_val_arr)
 
-    # e_val_arr_abs_sorted = np.sort(e_val_arr_abs)
+    e_val_arr_abs_sorted = np.sort(e_val_arr_abs)
 
-    # for i in range(topo_state_no):
-    #     topo_state_arr_idx_arr.append((e_val_arr_abs == e_val_arr_abs_sorted[i]).argmax())
-    for i in range(topo_state_no//2):
-        topo_state_arr_idx_arr.append((dim // 2) + i)
-        topo_state_arr_idx_arr.append((dim // 2) - i - 1)
+    for i in range(topo_state_no):
+        topo_state_arr_idx_arr.append((e_val_arr_abs == e_val_arr_abs_sorted[i]).argmax())
+    # for i in range(topo_state_no//2):
+    #     topo_state_arr_idx_arr.append((dim // 2) + i)
+    #     topo_state_arr_idx_arr.append((dim // 2) - i - 1)
 
     for i in topo_state_arr_idx_arr:
         topo_state_arr.append(e_vec_arr[:, i])
@@ -81,13 +81,13 @@ for i, e_v_arr in enumerate(all_e_val_arr.transpose()):
 plt.grid()
 plt.show()
 
-sites_arr = np.arange(tot_sites)
-for state in topo_state_pos_sp_arr[0]:
-    plt.plot(sites_arr, state)
-    plt.plot(sites_arr, state**2)
-    # plt.legend()
-    plt.grid()
-    plt.show()
+# sites_arr = np.arange(tot_sites)
+# for state in topo_state_pos_sp_arr[0]:
+#     plt.plot(sites_arr, state)
+#     plt.plot(sites_arr, state**2)
+#     # plt.legend()
+#     plt.grid()
+#     plt.show()
 
 
 # data_file_name = "ssh-mul-e-mul-v-run.h5"

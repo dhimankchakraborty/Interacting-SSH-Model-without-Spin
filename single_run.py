@@ -21,8 +21,8 @@ v = 0
 tot_sites = 2 * N
 topo_state_no = 2
 N_e = N
-V1 = -1
-V2 = -2
+V1 = 0.1
+V2 = V1
 
 start_time = datetime.now()
 
